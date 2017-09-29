@@ -2,6 +2,8 @@
 #HTML5 Video Player with custom controls, quality switching and no dependency 
 
 #Quality List should be an array of quality tag name followed by video link
+
+
 #For Example
 
 var videoQualities = [
@@ -12,7 +14,11 @@ var videoQualities = [
 ];
 
 #Specify default Video to Play
+
+
 var defaultPlay = "720p";
 
 #Initialize the Player
+
+
 initPlayer(videoQualities,defaultPlay);
