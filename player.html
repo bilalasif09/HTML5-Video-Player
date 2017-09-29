@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="player.css">
+		<script type="text/javascript" src="player.js"></script>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	</head>
+	<body class="no-margin">
+		<div id="player-container"></div>
+	</body>
+	<script type="text/javascript">
+		(function() {
+			//Quality List should be an array of quality tag name followed by video link
+			var videoQualities = [
+			"HD","https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/BigBuckBunny.mp4",
+			"SD","https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/BigBuckBunny.mp4",
+			"MD","https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/BigBuckBunny.mp4",
+			"LOW","http://s3-eu-central-1.amazonaws.com/kcms-prod/video_qualities/video_files/000/028/254/original/The_Goggle_Song_Mubarakan_New_Bollywood_Songs_Bollywood_Latest_Songs_1.mp4?1499420235"
+			]
+			var defaultPlay = "MD";
+		   	initPlayer(videoQualities,defaultPlay);
+		})();
+	</script>
+</html>
