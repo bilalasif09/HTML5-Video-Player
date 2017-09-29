@@ -70,11 +70,6 @@ function initPlayer(vids,defaultPlay){
 	var qualityOverlay = document.getElementById('quality-overlay');
 	var quality = document.getElementById('quality');
 	quality.addEventListener('click',function(){
-		console.log("qclick")
-		// if(qualityOverlay.className==='no-display'){ 
-		// 	qualityOverlay.className = 'no-class';
-		// }
-		// else qualityOverlay.className='no-display';
 		if (qualityOverlay.style.visibility === 'visible'){
 			qualityOverlay.style.visibility = 'hidden';
 		} else {
@@ -82,7 +77,7 @@ function initPlayer(vids,defaultPlay){
 		}
 	})
 	el.addEventListener('click',function(e){
-		//if(e.srcElement.attributes[0].value!=='quality')qualityOverlay.className='no-display';
+		//if(e.srcElement.attributes[0].value!=='quality') qualityOverlay.style.visibility='hidden';
 	})
 	video.addEventListener('loadedmetadata',function(){
 	    vidDurationEl.innerHTML = video.duration.toFixed(2).toString().toHHMMSS(0);
