@@ -42,7 +42,7 @@ function getPlayableSource(defaultPlay){
 }
 function initPlayer(vids,defaultPlay){
 	vidList=vids
-	var html = `<figure id="player"><div class="header"><div class="inputs"><div class="no-display" id="quality-overlay">`
+	var html = `<figure id="player"><div class="header"><div class="inputs"><div id="quality-overlay">`
 	+getQualityTags(defaultPlay)
 	+`</div><div id="loader" class="no-display loader"></div><video id="video" preload="metadata" src=`
 	+getPlayableSource(defaultPlay)
@@ -70,11 +70,19 @@ function initPlayer(vids,defaultPlay){
 	var qualityOverlay = document.getElementById('quality-overlay');
 	var quality = document.getElementById('quality');
 	quality.addEventListener('click',function(){
-		if(qualityOverlay.className==='no-display')qualityOverlay.className='';
-		else qualityOverlay.className='no-display';
+		console.log("qclick")
+		// if(qualityOverlay.className==='no-display'){ 
+		// 	qualityOverlay.className = 'no-class';
+		// }
+		// else qualityOverlay.className='no-display';
+		if (qualityOverlay.style.visibility === 'visible'){
+			qualityOverlay.style.visibility = 'hidden';
+		} else {
+			qualityOverlay.style.visibility = 'visible';
+		}
 	})
 	el.addEventListener('click',function(e){
-		if(e.srcElement.attributes[0].value!=='quality')qualityOverlay.className='no-display';
+		//if(e.srcElement.attributes[0].value!=='quality')qualityOverlay.className='no-display';
 	})
 	video.addEventListener('loadedmetadata',function(){
 	    vidDurationEl.innerHTML = video.duration.toFixed(2).toString().toHHMMSS(0);
