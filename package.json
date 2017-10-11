@@ -1,0 +1,11 @@
+{
+  "name": "html5-video-player-bilalasif09",
+  "version": "1.0.0",
+  "description": "Simple and Minimal HTML5 Video for your web and mobile HTML5 apps",
+  "main": "player.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
