@@ -5,24 +5,25 @@ var vidList=[],
 		autoplay: null
 	}, 
 	defaultPlay=null;
-	
+
 var getQualityTags = function () {
 	var html;
+	
 	vidList.forEach(function(val,i){
 		if(i%2===0){
 			if(i!==0&&val!==defaultPlay){
-				html=html+`<p class="qs" onclick="switchQuality(this)">`+val+'</p>';
+				html=html+`<p class="qs">`+val+'</p>';
 			}
 			else if(i!==0&&val===defaultPlay){
-				html=html+`<p class="qs active-quality" onclick="switchQuality(this)">`
+				html=html+`<p class="qs active-quality">`
 				+val+'</p>';
 			}
 			else if(i===0&&val===defaultPlay){
-				html=`<p class="qs active-quality" onclick="switchQuality(this)">`
+				html=`<p class="qs active-quality">`
 				+val+'</p>';
 			}
 			else if(i===0&&val!==defaultPlay){
-				html=`<p class="qs" onclick="switchQuality(this)">`+val+'</p>';
+				html=`<p class="qs">`+val+'</p>';
 			}
 		}
 	})
@@ -36,7 +37,9 @@ var stopVideo = function () {
 	video.currentTime=0;
 	progress.value=0;
 }
-var switchQuality = function (el){
+
+var switchQuality = function (){
+	var el = this;
 	var switchTo = el.innerHTML; 
 	var activeEl = document.getElementsByClassName('active-quality');
 	var video = document.getElementById('video');
@@ -59,6 +62,12 @@ var switchQuality = function (el){
 				return;
 			}
 		}
+	}
+}
+var listenQualitySwitching = function () {
+	var el = document.getElementsByClassName("qs");
+	for (var i=0; i<el.length; i++){
+		el[i].addEventListener("click", switchQuality);
 	}
 }
 var getPlayableSource = function (){
@@ -109,7 +118,7 @@ var initPlayer = function (vids,defaultPlayParam,optionsParam) {
     elChild = document.createElement('div');
 	elChild.innerHTML = getPlayerHtml();
 	el.appendChild(elChild);
-
+	listenQualitySwitching();
 	var video = document.getElementById('video');
 	var videoContainer = document.getElementById('player');
 	var videoControls = document.getElementById('video-controls');
@@ -286,7 +295,7 @@ var initPlayer = function (vids,defaultPlayParam,optionsParam) {
 	});
 	var isFullScreenState=false, isHiddenControls=false;
 	var hideCursorControls = function(){
-		if(isFullScreenState&&!isHiddenControls){isHiddenControls=true;var videoControls=document.getElementById('video-controls');videoControls.className='no-display';}
+		if(isFullScreenState&&!isHiddenControls){qualityOverlay.style.visibility='hidden';isHiddenControls=true;var videoControls=document.getElementById('video-controls');videoControls.className='no-display';}
 	}
 	var showCursorControls = function(){
 		if(isHiddenControls){isHiddenControls=false;var videoControls=document.getElementById('video-controls');videoControls.className='controls fullscreen-controls';}
