@@ -6,8 +6,7 @@
 
 # For Example in Angular
 
-# add HTML
-#<div id="player-container"></div>
+# add HTML id = "player-container"
 
 # require js file
 import { initPlayer } from 'html5-video-player-bilalasif09/player.js'
