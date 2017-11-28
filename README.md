@@ -1,10 +1,13 @@
 # HTML5-Video-Player
-#HTML5 Video Player with custom controls, quality switching and no dependency 
+# HTML5 Video Player with custom controls, quality switching and no dependency 
+# npm download link https://www.npmjs.com/package/html5-video-player-bilalasif09
+# Quality List should be an array of quality tag name followed by video link
 
-#Quality List should be an array of quality tag name followed by video link
 
+# For Example in Angular
 
-#For Example in Angular
+# add HTML
+<div id="player-container"></div>
 
 # require js file
 import { initPlayer } from 'html5-video-player-bilalasif09/player.js'
@@ -22,7 +25,6 @@ var videoQualities = [
 ];
 
 # Specify default Video to Play
-
 
 var defaultPlay = "720p";
 
