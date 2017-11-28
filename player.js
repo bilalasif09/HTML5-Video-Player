@@ -8,22 +8,21 @@ var vidList=[],
 
 var getQualityTags = function () {
 	var html;
-	
 	vidList.forEach(function(val,i){
 		if(i%2===0){
 			if(i!==0&&val!==defaultPlay){
-				html=html+`<p class="qs">`+val+'</p>';
+				html=html+'<p class="qs">'+val+'</p>';
 			}
 			else if(i!==0&&val===defaultPlay){
-				html=html+`<p class="qs active-quality">`
+				html=html+'<p class="qs active-quality">'
 				+val+'</p>';
 			}
 			else if(i===0&&val===defaultPlay){
-				html=`<p class="qs active-quality">`
+				html='<p class="qs active-quality">'
 				+val+'</p>';
 			}
 			else if(i===0&&val!==defaultPlay){
-				html=`<p class="qs">`+val+'</p>';
+				html='<p class="qs">'+val+'</p>';
 			}
 		}
 	})
@@ -37,8 +36,7 @@ var stopVideo = function () {
 	video.currentTime=0;
 	progress.value=0;
 }
-
-var switchQuality = function (){
+var switchQuality = function () {
 	var el = this;
 	var switchTo = el.innerHTML; 
 	var activeEl = document.getElementsByClassName('active-quality');
@@ -70,7 +68,7 @@ var listenQualitySwitching = function () {
 		el[i].addEventListener("click", switchQuality);
 	}
 }
-var getPlayableSource = function (){
+var getPlayableSource = function () {
 	for(var i=0;i<vidList.length;i++){
 		if(vidList[i]===defaultPlay){
 			return vidList[i+1];
@@ -81,14 +79,13 @@ var getPlayerHtml = function () {
 	return `<figure id="player"><div class="header"><div class="inputs">`
 	+`<div id="quality-overlay">`
 	+getQualityTags()
-	+`</div><div id="play-icon-lg" class="play-icon-lg"></div>`
-	+`<div id="loader" class="no-display loader"></div><video `
+	+`</div><div id="loader" class="no-display loader"></div><video `
 	+getVideoPoster()
 	+getAutoPlayAttr()
 	+` id="video" preload="auto" src=`
 	+getPlayableSource()
 	+`></video></div><div class="inputs-overlay"></div></div></figure>`
-	+`<ul id="video-controls" class="controls no-display"><li class="progress">`
+	+`<ul id="video-controls" class="controls"><li class="progress">`
 	+`<progress id="progress" value="0" min="0"><span id="progress-bar"></span>`
 	+`</progress></li><li><div id="playpause" title="Play/Pause" class="play-icon">`
 	+`</div></li><li><div id="stop" title="Stop" class="stop-icon"></div></li>`
@@ -109,7 +106,7 @@ var getAutoPlayAttr = function () {
 		if (options.autoplay) return ` autoplay=`+options.autoplay
 	}
 }
-var initPlayer = function (vids,defaultPlayParam,optionsParam) {
+exports.initPlayer = function (vids,defaultPlayParam,optionsParam) {
 	vidList=vids
 	options=optionsParam
 	defaultPlay=defaultPlayParam
@@ -119,6 +116,7 @@ var initPlayer = function (vids,defaultPlayParam,optionsParam) {
 	elChild.innerHTML = getPlayerHtml();
 	el.appendChild(elChild);
 	listenQualitySwitching();
+
 	var video = document.getElementById('video');
 	var videoContainer = document.getElementById('player');
 	var videoControls = document.getElementById('video-controls');
@@ -129,7 +127,6 @@ var initPlayer = function (vids,defaultPlayParam,optionsParam) {
 	var vidDurationEl = document.createElement('span');
 	var vidCurrDurationEl = document.createElement('span');
 	var playpause = document.getElementById('playpause');
-	var playIconLg = document.getElementById('play-icon-lg');
 	var stop = document.getElementById('stop');
 	var mute = document.getElementById('mute');
 	var progress = document.getElementById('progress');
@@ -187,11 +184,7 @@ var initPlayer = function (vids,defaultPlayParam,optionsParam) {
 	}
 	var isFirstPlay = true
 	var playOrPauseVideo = function () {
-		if(isFirstPlay) {
-			video.play();playpause.className='pause-icon';isFirstPlay=false
-			videoControls.className = 'controls'
-			playIconLg.className += ' no-display' 
-		}
+		if(isFirstPlay) {video.play();playpause.className='pause-icon';isFirstPlay=false}
 		else if(!isFirstPlay&&video.paused){video.play();playpause.className='pause-icon';}
 		else if(!video.paused){video.pause();playpause.className='play-icon';}
 	}
@@ -252,10 +245,10 @@ var initPlayer = function (vids,defaultPlayParam,optionsParam) {
 			setFullscreenData(false);
 		}
 		else {
-			if (videoContainer.requestFullscreen) el.requestFullscreen();
-			else if (videoContainer.mozRequestFullScreen) el.mozRequestFullScreen();
-			else if (videoContainer.webkitRequestFullScreen) el.webkitRequestFullScreen();
-			else if (videoContainer.msRequestFullscreen) el.msRequestFullscreen();
+			if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
+			else if (videoContainer.mozRequestFullScreen) videoContainer.mozRequestFullScreen();
+			else if (videoContainer.webkitRequestFullScreen) videoContainer.webkitRequestFullScreen();
+			else if (videoContainer.msRequestFullscreen) videoContainer.msRequestFullscreen();
 			setFullscreenData(true);
 		}
 	}
@@ -295,7 +288,7 @@ var initPlayer = function (vids,defaultPlayParam,optionsParam) {
 	});
 	var isFullScreenState=false, isHiddenControls=false;
 	var hideCursorControls = function(){
-		if(isFullScreenState&&!isHiddenControls){qualityOverlay.style.visibility='hidden';isHiddenControls=true;var videoControls=document.getElementById('video-controls');videoControls.className='no-display';}
+		if(isFullScreenState&&!isHiddenControls){isHiddenControls=true;var videoControls=document.getElementById('video-controls');videoControls.className='no-display';}
 	}
 	var showCursorControls = function(){
 		if(isHiddenControls){isHiddenControls=false;var videoControls=document.getElementById('video-controls');videoControls.className='controls fullscreen-controls';}

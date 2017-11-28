@@ -1,11 +1,73 @@
 {
-  "name": "html5-video-player-bilalasif09",
-  "version": "1.0.0",
+  "_args": [
+    [
+      {
+        "raw": "html5-video-player-bilalasif09",
+        "scope": null,
+        "escapedName": "html5-video-player-bilalasif09",
+        "name": "html5-video-player-bilalasif09",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/bilal/Projects/poetry-web"
+    ]
+  ],
+  "_from": "html5-video-player-bilalasif09@latest",
+  "_id": "html5-video-player-bilalasif09@1.0.0",
+  "_inCache": true,
+  "_location": "/html5-video-player-bilalasif09",
+  "_nodeVersion": "7.9.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/html5-video-player-bilalasif09-1.0.0.tgz_1507198780977_0.09196754754520953"
+  },
+  "_npmUser": {
+    "name": "bilalasif09",
+    "email": "bilalasif09@gmail.com"
+  },
+  "_npmVersion": "4.6.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "html5-video-player-bilalasif09",
+    "scope": null,
+    "escapedName": "html5-video-player-bilalasif09",
+    "name": "html5-video-player-bilalasif09",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/html5-video-player-bilalasif09/-/html5-video-player-bilalasif09-1.0.0.tgz",
+  "_shasum": "b586b31354628a14da72608924bd8eabf9786052",
+  "_shrinkwrap": null,
+  "_spec": "html5-video-player-bilalasif09",
+  "_where": "/home/bilal/Projects/poetry-web",
+  "author": "",
+  "dependencies": {},
   "description": "Simple and Minimal HTML5 Video for your web and mobile HTML5 apps",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "b586b31354628a14da72608924bd8eabf9786052",
+    "tarball": "https://registry.npmjs.org/html5-video-player-bilalasif09/-/html5-video-player-bilalasif09-1.0.0.tgz"
+  },
+  "license": "ISC",
   "main": "player.js",
+  "maintainers": [
+    {
+      "name": "bilalasif09",
+      "email": "bilalasif09@gmail.com"
+    }
+  ],
+  "name": "html5-video-player-bilalasif09",
+  "optionalDependencies": {},
+  "readme": "# HTML5-Video-Player\n#HTML5 Video Player with custom controls, quality switching and no dependency \n\n#Quality List should be an array of quality tag name followed by video link\n\n\n#For Example\n\nvar videoQualities = [\n\"1080p\",\"https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/BigBuckBunny.mp4\",\n\"720p\",\"https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/BigBuckBunny.mp4\",\n\"320p\",\"https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/BigBuckBunny.mp4\",\n\"144p\",\"https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/BigBuckBunny.mp4\"\n];\n\n#Specify default Video to Play\n\n\nvar defaultPlay = \"720p\";\n\n#Initialize the Player\n\n\ninitPlayer(videoQualities,defaultPlay);",
+  "readmeFilename": "README.md",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "version": "1.0.0"
 }

@@ -6,9 +6,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	</head>
 	<body class="no-margin">
-		<div style="margin:30px auto; width: 70%;">
-			<div id="player-container"></div>
-		</div>
+		<div id="player-container"></div>
 	</body>
 	<script type="text/javascript">
 		(function() {
@@ -24,6 +22,7 @@
 				poster: "http://d17716y51on07i.cloudfront.net/videos/thumbs/000/011/605/original/Jpeg_5660.jpg?1504608645",
 				autoplay: false
 			}
+			console.log("Init")
 		   	initPlayer(videoQualities,defaultPlay,options);
 		})();
 	</script>
