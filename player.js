@@ -47,16 +47,21 @@ var switchQuality = function () {
 	else{
 		activeEl[0].className='qs';
 		el.className+=' active-quality';
-		var seekTime = null;
+		var seekTime = video.currentTime;
+		var isPausedVideo = video.paused;
+
 		for(var i=0;i<vidList.length;i++){
 			if (vidList[i]===switchTo) {
-				seekTime=video.currentTime;
-				stopVideo();
 				video.src=vidList[i+1];
 				video.currentTime=seekTime;
-				video.load();
-				video.play();
-				playpause.className='pause-icon';
+				if (isPausedVideo) {
+					video.pause();
+					playpause.className='play-icon';	
+				} else {
+					//video.play();
+					playpause.className='pause-icon';
+				}
+
 				return;
 			}
 		}
@@ -76,34 +81,34 @@ var getPlayableSource = function () {
 	}
 }
 var getPlayerHtml = function () {
-	return '<figure id="player"><div class="header"><div class="inputs">'
-	+'<div id="quality-overlay">'
+	return `<figure id="player"><div class="header"><div class="inputs">`
+	+`<div id="quality-overlay">`
 	+getQualityTags()
-	+'</div><div id="loader" class="no-display loader"></div><video '
+	+`</div><div id="loader" class="no-display loader"></div><video `
 	+getVideoPoster()
 	+getAutoPlayAttr()
-	+' id="video" preload="auto" src='
+	+` id="video" preload="auto" src=`
 	+getPlayableSource()
-	+'></video></div><div class="inputs-overlay"></div></div></figure>'
-	+'<ul id="video-controls" class="controls"><li class="progress">'
-	+'<progress id="progress" value="0" min="0"><span id="progress-bar"></span>'
-	+'</progress></li><li><div id="playpause" title="Play/Pause" class="play-icon">'
-	+'</div></li><li><div id="stop" title="Stop" class="stop-icon"></div></li>'
-	+'<li><div id="mute" title="Mute/Unmute" class="mute-icon"></div>'
-	+'<div id="volume" class="volume" title="Set volume">'
-	+'<span id="volumeBar" class="volumeBar"></span></div></li>'
-	+'<li><div id="vidDuration"></div><div id="vidCurrDuration"></div></li>'
-	+'<li><div id="fs" title="Fullscreen" class="fullscreen"></div></li>'
-	+'<li><div id="quality" title="Quality" class="quality"></div></li></ul>';
+	+`></video></div><div class="inputs-overlay"></div></div></figure>`
+	+`<ul id="video-controls" class="controls"><li class="progress">`
+	+`<progress id="progress" value="0" min="0"><span id="progress-bar"></span>`
+	+`</progress></li><li><div id="playpause" title="Play/Pause" class="play-icon">`
+	+`</div></li><li><div id="stop" title="Stop" class="stop-icon"></div></li>`
+	+`<li><div id="mute" title="Mute/Unmute" class="mute-icon"></div>`
+	+`<div id="volume" class="volume" title="Set volume">`
+	+`<span id="volumeBar" class="volumeBar"></span></div></li>`
+	+`<li><div id="vidDuration"></div><div id="vidCurrDuration"></div></li>`
+	+`<li><div id="fs" title="Fullscreen" class="fullscreen"></div></li>`
+	+`<li><div id="quality" title="Quality" class="quality"></div></li></ul>`;
 }
 var getVideoPoster = function () {
 	if (options) {
-		if (options.poster) return ' poster='+options.poster
+		if (options.poster) return ` poster=`+options.poster
 	} 
 }
 var getAutoPlayAttr = function () {
 	if (options) {
-		if (options.autoplay) return ' autoplay='+options.autoplay
+		if (options.autoplay) return ` autoplay=`+options.autoplay
 	}
 }
 exports.initPlayer = function (vids,defaultPlayParam,optionsParam) {
@@ -262,6 +267,7 @@ exports.initPlayer = function (vids,defaultPlayParam,optionsParam) {
 	   else{isFullScreenState=false;videoControls.className='controls';}
 	}
 	document.addEventListener('fullscreenchange', function(e) {
+		console.log("fullScreen change")
 	   setFullscreenData(!!(document.fullScreen || document.fullscreenElement));
 	});
 	document.addEventListener('webkitfullscreenchange', function() {
@@ -271,6 +277,7 @@ exports.initPlayer = function (vids,defaultPlayParam,optionsParam) {
 	   setFullscreenData(!!document.mozFullScreen);
 	});
 	document.addEventListener('msfullscreenchange', function() {
+		console.log("fullScreen change ms")
 	   setFullscreenData(!!document.msFullscreenElement);
 	});
 	//volume bar event
