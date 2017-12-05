@@ -263,8 +263,9 @@ exports.initPlayer = function (vids,defaultPlayParam,optionsParam) {
 	var setFullscreenData = function(state) {
 	   videoContainer.setAttribute('data-fullscreen', !!state);
 	   var videoControls=document.getElementById('video-controls');
-	   if(state){isFullScreenState=true;videoControls.className += ' fullscreen-controls';} 
-	   else{isFullScreenState=false;videoControls.className='controls';}
+	   if(state){isFullScreenState=true;videoControls.className += ' fullscreen-controls';
+		video.className = 'full-sc-vid'} 
+	   else{isFullScreenState=false;videoControls.className='controls';video.className = ''}
 	}
 	document.addEventListener('fullscreenchange', function(e) {
 		console.log("fullScreen change")

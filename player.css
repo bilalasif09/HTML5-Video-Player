@@ -65,3 +65,4 @@ video{width:670px;min-height:377px;background:#333;display:flex}
   #quality-overlay p{padding:7px 30px;}
 }
 .no-margin{margin:0;}
+.full-sc-vid{width:100%;}
